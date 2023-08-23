@@ -1,8 +1,7 @@
 import { Sequelize } from "sequelize";
 
-const db = new Sequelize("risevest", "postgres", "5560", {
-  host: "localhost",
-  dialect: "postgres",
-});
+const db = new Sequelize(
+  "postgres://risevestdb_user:1ItPF2a4ZcueDkfguj1aCGHfLvVXmVwf@dpg-cjij51ocfp5c738hovc0-a.oregon-postgres.render.com/risevestdb?ssl=true"
+); // Example for postgres
 
 export default db;
