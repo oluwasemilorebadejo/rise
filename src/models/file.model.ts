@@ -41,6 +41,7 @@ File.init(
     },
     status: {
       type: DataTypes.ENUM("safe", "unsafe"),
+      defaultValue: "safe",
     },
     user: {
       type: DataTypes.STRING,
