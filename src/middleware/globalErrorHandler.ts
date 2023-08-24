@@ -1,6 +1,11 @@
 import { ErrorRequestHandler, Request, Response, NextFunction } from "express";
 import AppError from "../utils/appError";
 
+const handleValidationErrorDB = (err: any) => {
+  const formattedMessage = err.details[0].message;
+  return new AppError(formattedMessage, 400);
+};
+
 const sendErrorDev = (err: any, req: Request, res: Response) =>
   res.status(err.statusCode).json({
     status: err.status,
@@ -37,6 +42,9 @@ export default (err: any, req: Request, res: Response, next: NextFunction) => {
   } else {
     let error = { ...err };
     error.message = err.message;
+
+    if (err.stack.startsWith("ValidationError"))
+      err = handleValidationErrorDB(err);
 
     sendErrorProd(err, req, res);
   }

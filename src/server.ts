@@ -11,6 +11,10 @@ db.authenticate()
     console.error("Unable to connect to the database:", error);
   });
 
+import app from "./app";
+
 const port: string | undefined = process.env.PORT;
 
-console.log(`listening on port ${port}`);
+const server = app.listen(port, () => {
+  console.log(`listening on port ${port}`);
+});
