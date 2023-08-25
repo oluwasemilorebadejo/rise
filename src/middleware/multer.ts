@@ -19,6 +19,7 @@ const validFileTypes = [
   "video/x-msvideo",
   "video/x-flv",
   "application/pdf",
+  "text/plain",
 ];
 
 // Multer configuration
@@ -29,8 +30,6 @@ const multerFilter = (
   file: Express.Multer.File,
   cb: multer.FileFilterCallback
 ) => {
-  // console.log(file);
-
   if (validFileTypes.includes(file.mimetype)) {
     cb(null, true);
   } else {
