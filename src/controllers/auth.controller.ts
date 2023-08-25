@@ -124,8 +124,8 @@ export const protect = catchAsync(
     }
 
     // Grant access to protected route
-    req.body.user = currentUser; // req.body.user stores the user data and is only available on protected routes
-    res.locals.user = currentUser;
+    req.body.user = currentUser.dataValues; // req.body.user stores the user data and is only available on protected routes
+    res.locals.user = currentUser.dataValues;
 
     next();
   }
