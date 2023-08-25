@@ -134,7 +134,7 @@ export const protect = catchAsync(
 export const restrictTo =
   (...roles: string[]) =>
   (req: Request, res: Response, next: NextFunction): void => {
-    if (!roles.includes(req.body.role)) {
+    if (!roles.includes(res.locals.user.role)) {
       return next(
         new AppError(
           "Access denied. You are not allowed to perform this operation.",

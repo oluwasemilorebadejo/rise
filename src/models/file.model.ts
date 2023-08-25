@@ -9,6 +9,7 @@ interface FileAttributes {
   path: string;
   status: "safe" | "unsafe";
   user: User;
+  type: "file" | "folder";
 }
 
 class File extends Model<FileAttributes> implements FileAttributes {
@@ -18,6 +19,7 @@ class File extends Model<FileAttributes> implements FileAttributes {
   public path!: string;
   public status!: "safe" | "unsafe";
   public user!: User;
+  public type!: "file" | "folder";
 }
 
 File.init(
@@ -45,6 +47,10 @@ File.init(
     },
     user: {
       type: DataTypes.STRING,
+    },
+    type: {
+      type: DataTypes.ENUM("file", "folder"),
+      defaultValue: "file",
     },
   },
   {
