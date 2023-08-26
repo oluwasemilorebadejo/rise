@@ -10,8 +10,16 @@
     "start:prod": "set NODE_ENV=production && node ./dist/server.js",
     "start": "nodemon --watch src -e ts,json  --exec ts-node ./src/server.ts"
   },
-  "author": "",
-  "license": "",
+  "author": "oluwasemilore",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oluwasemilorebadejo/rise.git"
+  },
+  "bugs": {
+    "url": "https://github.com/oluwasemilorebadejo/rise.git/issues"
+  },
+  "homepage": "https://github.com/oluwasemilorebadejo/rise.git#readme",
   "jest": {
     "preset": "ts-jest",
     "setupFilesAfterEnv": [
