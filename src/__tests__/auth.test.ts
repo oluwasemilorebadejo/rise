@@ -12,7 +12,12 @@ describe("Authentication API", () => {
   const signUpNewUserData = {
     firstName: "John",
     lastName: "Doe",
-    email: "jho@example.com",
+    email: "jhammmmmmm@example.com",
+    password: "password123",
+  };
+
+  const logInUserData = {
+    email: "jon@example.com",
     password: "password123",
   };
 
@@ -33,22 +38,17 @@ describe("Authentication API", () => {
       .expect("Content-Type", /json/)
       .expect(201);
 
-    console.log(response);
-
     expect(response.body.status).toBe("success");
   });
 
-  // test("should login an existing user", async () => {
-  //   // Create a test user here using a utility or test database setup
+  test("should login an existing user", async () => {
+    const response = await request(app)
+      .post("/api/v1/auth/login")
+      .send(logInUserData)
+      .expect(200);
 
-  //   const response = await request(app).post("/api/v1/auth/login").send({
-  //     email: "john@example.com",
-  //     password: "password123",
-  //   });
-
-  //   expect(response.status).toBe(200);
-  //   expect(response.body.status).toBe("success");
-  //   expect(response.body.token).toBeDefined();
-  //   expect(response.body.data.user).toBeDefined();
-  // });
+    expect(response.body.status).toBe("success");
+    expect(response.body.token).toBeDefined();
+    expect(response.body.data.user).toBeDefined();
+  });
 });

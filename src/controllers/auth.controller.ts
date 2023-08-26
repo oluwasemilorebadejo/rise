@@ -7,8 +7,8 @@ import { hashPassword, correctPassword } from "../helpers/auth.helpers";
 import { JWTData } from "../interfaces/interface";
 
 const signToken = (id: string) =>
-  jwt.sign({ id: id }, process.env.JWT_SECRET!, {
-    expiresIn: process.env.JWT_EXPIRES_IN,
+  jwt.sign({ id: id }, process.env.JWT_SECRET! || "-", {
+    expiresIn: process.env.JWT_EXPIRES_IN! || "1",
   });
 
 const createSendToken = (
@@ -22,7 +22,7 @@ const createSendToken = (
   const cookieOptions = {
     expires: new Date(
       Date.now() +
-        Number(process.env.JWT_COOKIE_EXPIRES_IN!) * 24 * 60 * 60 * 1000
+        Number(process.env.JWT_COOKIE_EXPIRES_IN! || "1") * 24 * 60 * 60 * 1000
     ),
     httpOnly: true, // cant manipulate cookie in any way ie cant delete the cookie
     secure: req.secure,
