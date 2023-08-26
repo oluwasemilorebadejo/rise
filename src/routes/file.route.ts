@@ -8,7 +8,6 @@ import {
   createFolder,
 } from "../controllers/file.controller";
 import { uploadSingle } from "../middleware/multer";
-import { create } from "domain";
 
 const router: Router = express.Router();
 
