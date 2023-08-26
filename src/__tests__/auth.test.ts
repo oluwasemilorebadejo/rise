@@ -12,7 +12,7 @@ describe("Authentication API", () => {
   const signUpNewUserData = {
     firstName: "John",
     lastName: "Doe",
-    email: "jhammmmmmm@example.com",
+    email: "jone@example.com",
     password: "password123",
   };
 
